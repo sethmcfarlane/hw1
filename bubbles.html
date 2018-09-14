@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/p5.min.js"></script>
-<style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/p5.min.js"></script>
+  <style>
   html, body {
     margin: 0;
     padding: 0;
@@ -11,61 +11,61 @@
 <meta charset="utf-8" />
 </head>
 <body>
-<script>
+  <script>
 
-var bubbles = [];
+  var bubbles = [];
 
-function setup() {
+  function setup() {
     createCanvas(700, 700);
 
     for (var i = 0; i < 10; i++) {
-        var bubble = {
-            x: random(width),
-            y: random(height),
-            radius: random(1, 150)
-        };
-        bubbles.push(bubble);
+      var bubble = {
+        x: random(width),
+        y: random(height),
+        radius: random(1, 150)
+      };
+      bubbles.push(bubble);
     }
-}
+  }
 
-function draw() {
+  function draw() {
     background(255);
 
     for (var i = 0; i < bubbles.length; i++) {
-        var bubble = bubbles[i];
+      var bubble = bubbles[i];
 
 
-        if (dist(mouseX, mouseY, bubble.x, bubble.y) < bubble.radius) { //remove start
-            if (mouseIsPressed) {
-                bubbles.splice(i, 1);
-                return; // remove this bubble!
-            }
-            fill(51, 102, 255, 200);
-        } else {
-            fill(51, 122, 255, 200);
-        } //remove end
-        ellipse(bubble.x, bubble.y, bubble.radius*2);
-        bubble.x += random(-1,1);
-        bubble.y += random(-1,1);
+      if (dist(mouseX, mouseY, bubble.x, bubble.y) < bubble.radius) { //remove start
+        if (mouseIsPressed) {
+          bubbles.splice(i, 1);
+          return; // remove this bubble!
         }
+        fill(51, 102, 255, 200);
+      } else {
+        fill(51, 122, 255, 200);
+      } //remove end
+      ellipse(bubble.x, bubble.y, bubble.radius*2);
+      bubble.x += random(-1,1);
+      bubble.y += random(-1,1);
+    }
 
-         // add start
-            if (mouseIsPressed) {
-              for (var i = 0; i < 1; i++) {
-                  var bubble = {
-                      x: random(width),
-                      y: random(height),
-                      radius: random(1, 150)
-                  };
-                  bubbles.push(bubble);
-              }
-            }
+    // add start
+    if (mouseIsPressed) {
+      for (var i = 0; i < 1; i++) {
+        var bubble = {
+          x: random(width),
+          y: random(height),
+          radius: random(1, 150)
+        };
+        bubbles.push(bubble);
+      }
+    }
 
 
 
 
 
-}
+  }
 
 </script>
 </body>
