@@ -37,15 +37,19 @@ function draw() {
 
         if (dist(mouseX, mouseY, bubble.x, bubble.y) < bubble.radius) { //remove start
             if (mouseIsPressed) {
-                bubbles.splice(i, 1); // remove this bubble!
+                bubbles.splice(i, 1);
+                return; // remove this bubble!
             }
             fill(51, 102, 255, 200);
         } else {
             fill(51, 122, 255, 200);
         } //remove end
+        ellipse(bubble.x, bubble.y, bubble.radius*2);
+        bubble.x += random(-1,1);
+        bubble.y += random(-1,1);
+        }
 
-
-        if (dist(mouseX, mouseY, bubble.x, bubble.y) < bubble.radius) { // add start
+         // add start
             if (mouseIsPressed) {
               for (var i = 0; i < 1; i++) {
                   var bubble = {
@@ -56,17 +60,11 @@ function draw() {
                   bubbles.push(bubble);
               }
             }
-            fill(51, 102, 255, 200);
-        } else {
-            fill(51, 122, 255, 200);
-        } // add end
 
 
 
-        ellipse(bubble.x, bubble.y, bubble.radius*2);
-        bubble.x += random(-1,1);
-        bubble.y += random(-1,1);
-    }
+
+
 }
 
 </script>
