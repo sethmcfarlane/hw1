@@ -14,6 +14,7 @@
   <script>
 
   var bubbles = [];
+  var mouseWasPressed = false;
 
   function setup() {
     createCanvas(700, 700);
@@ -38,6 +39,7 @@
       if (dist(mouseX, mouseY, bubble.x, bubble.y) < bubble.radius) { //remove start
         if (mouseIsPressed) {
           bubbles.splice(i, 1);
+          mouseWasPressed = true;
           return; // remove this bubble!
         }
         fill(51, 102, 255, 200);
@@ -51,6 +53,7 @@
 
     // add start
     if (mouseIsPressed) {
+      if (!mouseWasPressed) {
       for (var i = 0; i < 1; i++) {
         var bubble = {
           x: random(width),
@@ -59,7 +62,12 @@
         };
         bubbles.push(bubble);
       }
+      mouseWasPressed = true;
     }
+  }
+  else {
+    mouseWasPressed = false;
+  }
 
 
 
